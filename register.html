@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Vault of Codes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ✅ Brand Header -->
+  <header class="brand-header">
+    <img src="assets/logo.png" alt="Vault of Codes" class="brand-logo" />
+    <span class="brand-title">Vault of Codes</span>
+  </header>
+
+  <!-- ✅ Registration Form -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-white border p-6 rounded-xl shadow-md w-full max-w-md">
+      <h2 class="text-xl font-bold mb-4 text-[#e74c3c]">Create an Account</h2>
+      <input type="text" id="regName" placeholder="Name" class="w-full border p-2 mb-3 rounded" />
+      <input type="email" id="regEmail" placeholder="Email" class="w-full border p-2 mb-3 rounded" />
+      <input type="password" id="regPass" placeholder="Password" class="w-full border p-2 mb-4 rounded" />
+      <button onclick="register()" class="w-full bg-[#e74c3c] text-white py-2 rounded mb-2">Register</button>
+      <p class="text-sm text-center">
+        Already have an account? 
+        <a href="login.html" class="text-[#e74c3c] underline">Login here</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- ✅ Script -->
+  <script>
+    function register() {
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const pass = document.getElementById("regPass").value.trim();
+
+      if (!name || !email || !pass) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify({
+        name,
+        email,
+        pass,
+        courses: [],
+        certificates: {}
+      }));
+
+      alert("Registered successfully!");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

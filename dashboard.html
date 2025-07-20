@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Vault of Codes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="text-black pt-20 bg-gray-50 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#e74c3c] flex justify-between items-center px-6 py-3 shadow text-white">
+    <div class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="Vault of Codes Logo" class="h-12 rounded-full" />
+      <span class="text-2xl font-semibold">Vault of Codes</span>
+    </div>
+    <button onclick="logout()" class="bg-white text-red-600 px-4 py-2 rounded hover:bg-red-100 font-semibold">
+      Logout
+    </button>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="p-6">
+    <h2 class="text-3xl font-bold mb-6 text-center">Welcome to Your Dashboard</h2>
+
+    <!-- My Courses -->
+    <section class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">📘 My Courses</h3>
+      <div id="myCourses" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- Available Courses -->
+    <section class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">🧑‍🏫 Available Courses</h3>
+      <div id="availableCourses" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- Generate Certificate -->
+    <section id="generate" class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">📜 Generate Certificate</h3>
+      <div id="genCert"></div>
+    </section>
+
+    <!-- Verify Certificate -->
+    <section id="verify" class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">🔍 Verify Certificate</h3>
+      <div id="verifyCert"></div>
+    </section>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    if (!localStorage.getItem("user")) {
+      alert("You must be logged in to access the dashboard!");
+      window.location.href = "login.html";
+    }
+
+    const user = JSON.parse(localStorage.getItem("user")) || { courses: [], certificates: {}, name: "Student" };
+
+    fetch("data/courses.json")
+      .then(res => res.json())
+      .then(courses => {
+        const myCourses = document.getElementById("myCourses");
+        const availableCourses = document.getElementById("availableCourses");
+        const genCert = document.getElementById("genCert");
+        const verifyCert = document.getElementById("verifyCert");
+
+        courses.forEach(course => {
+          const isEnrolled = user.courses.includes(course.id);
+
+          if (isEnrolled) {
+            // My Courses Section
+            myCourses.innerHTML += `
+              <div class="p-4 border rounded bg-green-100 font-medium">
+                ✅ ${course.title}
+              </div>`;
+
+            // Generate Certificate Section
+            const cert = user.certificates[course.id];
+            genCert.innerHTML += `
+              <div class="p-4 border rounded mb-2 bg-white">
+                <p class="mb-2 font-semibold">${course.title}</p>
+                ${cert ? `<p class="text-green-600">✅ Certificate already generated</p>` :
+                `<button onclick="generateCert('${course.id}')" class="text-white px-3 py-1 rounded" style="background-color:#e74c3c">Generate</button>`}
+              </div>
+            `;
+
+            // Verify Certificate Section
+            if (cert) {
+              verifyCert.innerHTML += `
+                <div class="border p-4 rounded mb-4 bg-white shadow">
+                  <h4 class="font-bold text-lg mb-2">${course.title}</h4>
+                  <div class="border p-4 bg-gray-50 text-center">
+                    <img src="assets/logo.png" class="w-20 mx-auto mb-2" />
+                    <p class="text-lg font-semibold">Certificate of Completion</p>
+                    <p>This is to certify that <strong>${user.name}</strong> has successfully completed the <strong>${course.title}</strong> course.</p>
+                  </div>
+                </div>`;
+            }
+
+          } else {
+            // Available Courses Section
+            availableCourses.innerHTML += `
+              <div class="p-4 border rounded bg-white shadow">
+                <h4 class="text-lg font-bold mb-1">${course.title}</h4>
+                <p class="mb-2 text-sm">${course.summary}</p>
+                <button onclick="addCourse('${course.id}')" class="text-white mt-1 px-3 py-1 rounded" style="background-color:#e74c3c">Add Course</button>
+              </div>
+            `;
+          }
+        });
+      });
+
+    function addCourse(id) {
+      if (user.courses.includes(id)) {
+        alert("You have already added this course.");
+        return;
+      }
+      if (confirm("Add this course?")) {
+        user.courses.push(id);
+        localStorage.setItem("user", JSON.stringify(user));
+        alert("Course added!");
+        location.reload();
+      }
+    }
+
+    function generateCert(id) {
+      if (!user.courses.includes(id)) {
+        alert("You must be enrolled in the course to generate a certificate.");
+        return;
+      }
+      user.certificates[id] = true;
+      localStorage.setItem("user", JSON.stringify(user));
+      alert("Certificate generated!");
+      location.reload();
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

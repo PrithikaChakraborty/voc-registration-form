@@ -1,0 +1,38 @@
+[
+  {
+    "id": "webdev",
+    "title": "Web Development",
+    "summary": "Learn HTML, CSS, JavaScript and frameworks.",
+    "details": "Batch starts from 1st August. Duration: 8 weeks."
+  },
+  {
+    "id": "pydev",
+    "title": "Python Development",
+    "summary": "Master Python for scripting, automation, and backend.",
+    "details": "Batch starts from 1st August. Duration: 6 weeks."
+  },
+  {
+    "id": "datasci",
+    "title": "Data Science",
+    "summary": "Work with Pandas, NumPy, ML models and more.",
+    "details": "Batch starts from 1st August. Duration: 10 weeks."
+  },
+  {
+    "id": "dataanalytics",
+    "title": "Data Analytics",
+    "summary": "Analyze datasets and draw meaningful insights.",
+    "details": "Batch starts from 1st August. Duration: 6 weeks."
+  },
+  {
+    "id": "cloud",
+    "title": "Cloud Computing",
+    "summary": "Explore AWS, Azure, and deploy scalable apps.",
+    "details": "Batch starts from 1st August. Duration: 5 weeks."
+  },
+  {
+    "id": "uiux",
+    "title": "UI/UX Design",
+    "summary": "Design beautiful and user-friendly interfaces.",
+    "details": "Batch starts from 1st August. Duration: 4 weeks."
+  }
+]
