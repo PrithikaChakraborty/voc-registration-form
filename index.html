@@ -3,232 +3,252 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vault of Codes</title>
+  <title>Register - Vault of Codes</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
+ <style>
+  body {
+    background: linear-gradient(to bottom, #e74c3c, #ffffff);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.419);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    border-radius: 20px;
+    padding: 2rem;    
+    }
+     /* Media Queries */
+  @media (max-width: 768px) {
+    .glass-card {
+      padding: 1.5rem;
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .glass-card {
+      padding: 1rem;
+      border-radius: 14px;
+    }
+  }
+  
+</style>
+
 </head>
 <body class="text-black font-sans bg-white">
 
- <!-- Header/Navbar -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#e74c3c] shadow-md">
-  <div class="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center">
-    <!-- Logo and Title -->
-    <div class="flex items-center gap-3">
-      <img src="assets/logo.png" alt="Vault of Codes Logo" class="brand-logo" />
-      <span class="text-white text-xl sm:text-2xl font-semibold">Vault of Codes</span>
+  <!-- Header/Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#e74c3c] shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center">
+      <!-- Logo and Title -->
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Vault of Codes Logo" class="brand-logo" />
+        <span class="text-white text-xl sm:text-2xl font-semibold">Vault of Codes</span>
+      </div>
+
+      <!-- Hamburger (Mobile) -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-white focus:outline-none">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav id="menu" class="hidden md:flex items-center gap-6">
+        <a href="home.html" class="text-white hover:text-gray-200 font-medium">Home</a>
+        <a href="dashboard.html" class="text-white hover:text-gray-200 font-medium">Dashboard</a>
+        <a href="login.html" class="bg-white text-red-500 px-4 py-1.5 rounded-md font-semibold hover:bg-gray-100 transition">Login</a>
+        <a href="index.html" class="border border-white text-white px-4 py-1.5 rounded-md font-semibold hover:bg-white hover:text-red-500 transition">Sign Up</a>
+      </nav>
     </div>
 
-    <!-- Hamburger Button (Mobile) -->
-    <div class="md:hidden">
-      <button id="menu-btn" class="text-white focus:outline-none focus:ring-2 focus:ring-white">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white px-4 py-3 space-y-2 shadow-md">
+      <a href="home.html" class="block text-red-500 font-medium hover:text-red-700">Home</a>
+      <a href="dashboard.html" class="block text-red-500 font-medium hover:text-red-700">Dashboard</a>
+      <a href="login.html" class="block text-white bg-red-500 px-4 py-2 rounded-md font-semibold text-center hover:bg-red-600">Login</a>
+      <a href="index.html" class="block border border-red-500 text-red-500 px-4 py-2 rounded-md font-semibold text-center hover:bg-red-100">Sign Up</a>
     </div>
-
-    <!-- Desktop Menu -->
-    <nav id="menu" class="hidden md:flex items-center gap-6">
-      <a href="index.html" class="text-white hover:text-gray-200 font-medium">Home</a>
-      <a href="dashboard.html" class="text-white hover:text-gray-200 font-medium">Dashboard</a>
-      <a href="login.html" class="bg-white text-red-500 px-4 py-1.5 rounded-md font-semibold hover:bg-gray-100 transition">Login</a>
-      <a href="register.html" class="border border-white text-white px-4 py-1.5 rounded-md font-semibold hover:bg-white hover:text-red-500 transition">Sign Up</a>
-    </nav>
-  </div>
-
-  <!-- Mobile Dropdown Menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white px-4 py-3 space-y-2 shadow-md">
-    <a href="index.html" class="block text-red-500 font-medium hover:text-red-700">Home</a>
-    <a href="dashboard.html" class="block text-red-500 font-medium hover:text-red-700">Dashboard</a>
-    <a href="login.html" class="block text-white bg-red-500 px-4 py-2 rounded-md font-semibold text-center hover:bg-red-600">Login</a>
-    <a href="register.html" class="block border border-red-500 text-red-500 px-4 py-2 rounded-md font-semibold text-center hover:bg-red-100">Sign Up</a>
-  </div>
-</header>
-
-
   </header>
 
-  <!-- Spacer -->
-  <div class="h-24"></div>
+  <!-- Spacer for fixed header -->
+ <div class="h-24"></div>
 
-  <!-- Welcome Message -->
-  <section class="text-center py-10 px-4 ">
-    <h1 class="text-4xl font-extrabold text-red-600 mb-2">WELCOME TO VAULT OF CODES</h1>
-    <p class="text-xl text-gray-700 font-semibold">Unlocking potential, one code at a time!</p>
-  </section>
 
-  <!-- Available Courses -->
-  <section class="p-6" id="course-container">
-    <h2 class="text-3xl font-bold mb-6 text-center">Available Courses</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cards"></div>
-  </section>
+   <!-- Main Registration -->
+  <main class="register-main flex justify-center items-center flex-grow py-10 px-4">
+   <form class="register-container w-full max-w-2xl glass-card" id="registrationForm">
 
-  <!-- Our Scholars -->
-  <section class="text-center py-10 ">
-    <h2 class="text-3xl font-bold mb-4">OUR SCHOLARS</h2>
-    <p class="text-gray-600">Thousands of students have successfully launched careers through us.</p>
-  </section>
+      <h2 class="text-3xl font-bold mb-6 text-center">Create an Account</h2>
 
-  <!-- Projects Carousel -->
-  <section class="bg-gray-50 py-12">
-  <h2 class="text-3xl font-bold text-center mb-8">AMAZING PROJECTS BY OUR STUDENTS</h2>
-
-  <div class="relative max-w-7xl mx-auto">
-    <!-- Left Button -->
-    <button onclick="scrollCarousel(-1)"
-      class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-10 hover:bg-red-100">
-      <
-    </button>
-
-    <!-- Carousel -->
-    <div id="projectCarousel"
-      class="flex overflow-x-auto gap-6 px-6 py-4 snap-x snap-mandatory scroll-smooth">
-      
-      <iframe class="snap-center rounded-xl shadow-lg flex-shrink-0 w-[320px] h-[180px] md:w-[560px] md:h-[315px]"
-        src="https://www.youtube.com/embed/clZB_W3Yk2g?si=Ff64Imq_iYG17wYS" allowfullscreen></iframe>
-      <iframe class="snap-center rounded-xl shadow-lg flex-shrink-0 w-[320px] h-[180px] md:w-[560px] md:h-[315px]"
-        src="https://www.youtube.com/embed/fxwAF9PSOoM?si=MzdPDicr3uyacm2M" allowfullscreen></iframe>
-        <iframe class="snap-center rounded-xl shadow-lg flex-shrink-0 w-[320px] h-[180px] md:w-[560px] md:h-[315px]"
-        src="https://www.youtube.com/embed/piOtIdejzd0?si=r-NHMjhg2Hn_1ng9" allowfullscreen></iframe>
-    </div>
-
-    <!-- Right Button -->
-    <button onclick="scrollCarousel(1)"
-      class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-10 hover:bg-red-100">
-      >
-    </button>
-  </div>
-</section>
-
-  <!-- Quality Learning Experience -->
-  <section class="text-center py-12 ">
-    <h2 class="text-3xl font-bold mb-8">QUALITY LEARNING EXPERIENCE</h2>
-    <div class="max-w-4xl mx-auto space-y-6 text-left bg-white p-6 rounded-xl shadow-xl">
-      <div class="p-4 rounded shadow">
-        <h3 class="font-bold text-lg">01. Industry Specialists</h3>
-        <p class="text-gray-600">Get training from 10+ years experience experts in Web Development, IT, and Multimedia domains.</p>
+      <!-- Name Row -->
+      <div class="flex gap-4 mb-4">
+        <div class="w-1/2">
+          <label for="firstName" class="block text-sm font-medium mb-1">
+            First Name <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="firstName" placeholder="Enter your first name" class="input-field w-full border rounded-md px-3 py-2" />
+        </div>
+        <div class="w-1/2">
+          <label for="lastName" class="block text-sm font-medium mb-1">
+            Last Name <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="lastName" placeholder="Enter your last name" class="input-field w-full border rounded-md px-3 py-2" />
+        </div>
       </div>
-      <div class="p-4 rounded shadow">
-        <h3 class="font-bold text-lg">02. 70% Practical Training / 30% Theoretical</h3>
-        <p class="text-gray-600">Build a portfolio while learning computer science through live projects.</p>
+
+      <!-- Email -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium mb-1">
+          Email Address <span class="text-red-500">*</span>
+        </label>
+        <input type="email" id="email" placeholder="Enter your email" class="input-field w-full border rounded-md px-3 py-2" />
       </div>
-      <div class="p-4 rounded shadow">
-        <h3 class="font-bold text-lg">03. Free Study Material For ALL !!</h3>
-        <p class="text-gray-600">More than 50GB+ materials including video courses, e-books, notes, projects and more.</p>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium mb-1">
+          Password <span class="text-red-500">*</span>
+        </label>
+        <input type="password" id="password" placeholder="Enter password" class="input-field w-full border rounded-md px-3 py-2" oninput="checkPasswordStrength()" />
       </div>
-    </div>
-  </section>
 
-  <!-- Best Offerings -->
-  <section class="py-12 px-6">
-    <h2 class="text-3xl font-bold text-center mb-8">Best Offerings For You</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-6xl mx-auto text-center font-bold text-white">
-      <div class="bg-red-500 rounded-xl shadow p-6 text-white text-lg md:text-xl font-bold text-center">
-  <div class="text-2xl">🎓</div>
-  Training & Internship Programs
-</div>
-<div class="bg-blue-500 rounded-xl shadow p-6 text-white text-lg md:text-xl font-bold text-center">
-  <div class="text-2xl">📝</div>
-  Test Series
-</div>
-<div class="bg-yellow-500 rounded-xl shadow p-6 text-white text-lg md:text-xl font-bold text-center">
-  <div class="text-2xl">📚</div>
-  Study Material
-</div>
-<div class="bg-green-500 rounded-xl shadow p-6 text-white text-lg md:text-xl font-bold text-center">
-  <div class="text-2xl">🎁</div>
-  Free Content
-</div>
+      <!-- Confirm Password -->
+      <div class="mb-4">
+        <label for="confirmPassword" class="block text-sm font-medium mb-1">
+          Confirm Password <span class="text-red-500">*</span>
+        </label>
+        <input type="password" id="confirmPassword" placeholder="Re-enter password" class="input-field w-full border rounded-md px-3 py-2" />
+      </div>
 
-    </div>
-  </section>
+      <!-- Password Strength -->
+      <div id="passwordStrength" class="text-sm font-semibold mb-4"></div>
 
-  <!-- FAQs -->
-  <section class="py-12 px-6 ">
-    <h2 class="text-3xl font-bold text-center mb-8">Top Queries</h2>
-    <div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-xl space-y-4">
-      <details class="border rounded p-4 shadow">
-        <summary class="font-semibold cursor-pointer">What kind of live training programs do you offer?</summary>
-        <p class="text-gray-600 mt-2">We offer full-stack, web dev, data science, Java, and more.</p>
-      </details>
-      <details class="border rounded p-4 shadow">
-        <summary class="font-semibold cursor-pointer">How long & when are your live training programs?</summary>
-        <p class="text-gray-600 mt-2">Most programs run 4–6 weeks with flexible start dates.</p>
-      </details>
-      <details class="border rounded p-4 shadow">
-        <summary class="font-semibold cursor-pointer">Can I get a certificate after completing a program?</summary>
-        <p class="text-gray-600 mt-2">Yes, certificates of achievement are awarded on completion.</p>
-      </details>
-      <details class="border rounded p-4 shadow">
-        <summary class="font-semibold cursor-pointer">Are the live training programs suitable for beginners?</summary>
-        <p class="text-gray-600 mt-2">Yes, our beginner-friendly approach ensures smooth onboarding.</p>
-      </details>
-      <details class="border rounded p-4 shadow">
-        <summary class="font-semibold cursor-pointer">How can I attend classes, submit work & access material?</summary>
-        <p class="text-gray-600 mt-2">All via our online platform with live sessions and dashboard.</p>
-      </details>
-    </div>
-  </section>
+      <!-- DOB -->
+      <div class="mb-4">
+        <label for="dob" class="block text-sm font-medium mb-1">
+          Date of Birth <span class="text-red-500">*</span>
+        </label>
+        <input type="date" id="dob" class="input-field w-full border rounded-md px-3 py-2" />
+      </div>
 
-  <!-- Register Now -->
-  <section class="py-10 bg-[#e74c3c] text-white text-center">
-    <h2 class="text-3xl font-bold mb-4">Grow. Learn. Earn</h2>
-    <a href="register.html" class="bg-white text-[#e74c3c] px-6 py-2 font-bold rounded shadow hover:bg-gray-100">Hurry Up, Register Now</a>
-  </section>
+      <!-- Gender -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">
+          Gender <span class="text-red-500">*</span>
+        </label>
+        <div class="flex gap-6">
+          <label><input type="radio" name="gender" value="Male" /> Male</label>
+          <label><input type="radio" name="gender" value="Female" /> Female</label>
+          <label><input type="radio" name="gender" value="Other" /> Other</label>
+        </div>
+      </div>
 
-  <!-- Footer -->
-  <footer class="bg-black text-white px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
-    <div class="flex items-center gap-3">
-      <img src="assets/logo.png" class="h-12 rounded-full" />
-      <span class="text-lg font-semibold">Vault of Codes</span>
-    </div>
-    <div class="text-center">
-      <p>📞 01169655581</p>
-      <p>✉️ vaultofcodes@gmail.com</p>
-    </div>
-    <div class="flex flex-col gap-1 text-right">
-      <a href="https://www.youtube.com/@vaultofcodes" class="hover:underline">YouTube</a>
-      <a href="https://www.instagram.com/vaultofcodes" class="hover:underline">Instagram</a>
-    </div>
-  </footer>
+      <!-- Profile Picture -->
+      <div class="mb-4">
+        <label for="profilePic" class="block text-sm font-medium mb-1">
+          Upload Profile Picture
+        </label>
+        <input type="file" id="profilePic" accept="image/*" class="input-field w-full border rounded-md px-3 py-2 file:bg-red-500 file:text-white file:rounded-md" />
+      </div>
 
-  <!-- Load Courses Script -->
+      <!-- Terms -->
+      <div class="mb-6">
+        <label class="text-sm flex items-center gap-2">
+          <input type="checkbox" id="terms" />
+          <span>I agree to the <a href="#" class="text-red-500 underline">Terms and Conditions</a> <span class="text-red-500">*</span></span>
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="bg-red-500 text-white w-full py-2 rounded-md font-semibold hover:bg-red-600 transition">
+        Register
+      </button>
+
+      <!-- Login Link -->
+      <p class="text-sm text-center mt-4">
+        Already have an account?
+        <a href="login.html" class="text-red-500 font-semibold">Login here</a>
+      </p>
+    </form>
+  </main>
+
+  <!-- Script Section -->
   <script>
-    fetch("data/courses.json")
-      .then(res => res.json())
-      .then(courses => {
-        const cards = document.getElementById("cards");
-        courses.forEach(course => {
-          const card = document.createElement("div");
-          card.className = "border rounded-xl p-4 shadow hover:shadow-lg transition bg-white";
-          card.innerHTML = `
-            <h3 class="text-lg font-semibold">${course.title}</h3>
-            <p>${course.summary}</p>
-            <button class="text-red-600 underline mt-2" onclick="toggleDetails('${course.id}')">Read More</button>
-            <div id="${course.id}-details" class="hidden mt-2">
-              <p class="text-sm">${course.details}</p>
-              <a href="register.html" class="inline-block mt-2 px-4 py-1 bg-red-600 text-white rounded">Register Now</a>
-            </div>
-          `;
-          cards.appendChild(card);
-        });
-      });
+    function checkPasswordStrength() {
+      const password = document.getElementById("password").value;
+      const strengthDisplay = document.getElementById("passwordStrength");
 
-    function toggleDetails(id) {
-      const detailDiv = document.getElementById(id + "-details");
-      detailDiv.classList.toggle("hidden");
+      let strength = "Weak";
+      let color = "red";
+
+      if (password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[\W]/.test(password)) {
+        strength = "Strong";
+        color = "green";
+      } else if (password.length >= 6) {
+        strength = "Medium";
+        color = "orange";
+      }
+
+      strengthDisplay.textContent = `Password Strength: ${strength}`;
+      strengthDisplay.style.color = color;
     }
-    function scrollCarousel(direction) {
-    const container = document.getElementById("projectCarousel");
-    const scrollAmount = container.offsetWidth * 0.8; // 80% width scroll
-    container.scrollBy({
-      left: direction * scrollAmount,
-      behavior: 'smooth'
+
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const dob = document.getElementById("dob").value;
+      const gender = document.querySelector('input[name="gender"]:checked')?.value;
+      const terms = document.getElementById("terms").checked;
+
+      if (!firstName || !lastName || !email || !password || !confirmPassword || !dob || !gender || !terms) {
+        alert("Please fill in all required fields and agree to the terms.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return;
+      }
+
+      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify({
+        name: `${firstName} ${lastName}`,
+        email,
+        dob,
+        gender,
+        password,
+        courses: [],
+        certificates: {}
+      }));
+
+      console.log("User registered:", { name: `${firstName} ${lastName}`, email, password });
+      alert("Registration successful!");
+      window.location.href = "login.html";
     });
-  }
-    <!-- JS to Toggle Menu -->
+        <!-- JS to Toggle Menu -->
 
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -237,5 +257,6 @@
     mobileMenu.classList.toggle("hidden");
   });
   </script>
+
 </body>
 </html>

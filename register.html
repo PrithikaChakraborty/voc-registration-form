@@ -36,9 +36,9 @@
     function register() {
       const name = document.getElementById("regName").value.trim();
       const email = document.getElementById("regEmail").value.trim();
-      const pass = document.getElementById("regPass").value.trim();
+      const password = document.getElementById("regPass").value.trim();
 
-      if (!name || !email || !pass) {
+      if (!name || !email || !password) {
         alert("Please fill in all fields.");
         return;
       }
@@ -46,11 +46,11 @@
       localStorage.setItem("user", JSON.stringify({
         name,
         email,
-        pass,
+        password,
         courses: [],
         certificates: {}
       }));
-
+      c
       alert("Registered successfully!");
       window.location.href = "login.html";
     }

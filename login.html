@@ -24,7 +24,7 @@
       <input type="password" id="loginPass" placeholder="Password" class="w-full border p-2 mb-4 rounded" />
       <button onclick="login()" class="w-full bg-[#e74c3c] text-white py-2 rounded mb-2">Login</button>
       <p class="text-sm text-center">Don't have an account? 
-        <a href="register.html" class="text-[#e74c3c] underline">Sign Up</a>
+        <a href="index.html" class="text-[#e74c3c] underline">Sign Up</a>
       </p>
     </div>
   </main>
@@ -32,10 +32,10 @@
   <script>
     function login() {
       const email = document.getElementById("loginEmail").value;
-      const pass = document.getElementById("loginPass").value;
+      const password = document.getElementById("loginPass").value;
       const user = JSON.parse(localStorage.getItem("user"));
 
-      if (user && user.email === email && user.pass === pass) {
+      if (user && user.email === email && user.password === password) {
         alert("Login successful");
         localStorage.setItem("isLoggedIn", "true");
         window.location.href = "dashboard.html";
